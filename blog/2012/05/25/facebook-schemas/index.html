@@ -5,11 +5,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>Tom Waddington</title>
+  <title>Browsing Facebook Schemas - Tom Waddington</title>
   <meta name="author" content="Tom Waddington">
 
   
-  <meta name="description" content="After finding the Facebook Want button last week, I decided to take a deeper look into the code behind it. What&#8217;s clear, is that Facebook have &hellip;">
+  <meta name="description" content="I&#8217;ve been working a lot with the Facebook Open Graph on Cut Out + Keep to push favorites, comments and projects back to the Timeline and Ticker &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -18,7 +18,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://tomwaddington.github.com/">
+  <link rel="canonical" href="http://tomwaddington.github.com/blog/2012/05/25/facebook-schemas/">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <script src="/javascripts/modernizr-2.0.js"></script>
@@ -85,195 +85,12 @@
 
   <div id="main">
     <div id="content">
-      <div class="blog-index">
+      <div>
+<article class="hentry" role="article">
   
-  
-  
-    <article>
-      
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2012/07/03/facebook-wants-to-share-your-purchases/">Facebook Wants to Share Your Purchases</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-07-03T18:11:00+01:00" pubdate data-updated="true">Jul 3<span>rd</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>After <a href="http://tom.waddington.me/blog/2012/06/27/facebook-want/">finding the Facebook Want button</a> last week, I decided to take a deeper look into the code behind it. What&#8217;s clear, is that Facebook have big plans for social commerce - and for sharing your purchases.</p>
-
-<p><img src="/images/social_commerce.jpg" title="Social Commerce" alt="Social Context Screenshot" /></p>
-
-<p>Though the Want button itself doesn&#8217;t work, I found it is still possible to Want an object using the Graph API. Sending a post request to <code>/me/wants</code> with a product parameter generates a stream story, and updates the want button counter.</p>
-
-<p><img src="/images/stream_story_wants.jpg" title="A stream story from a Want" alt="Want Stream Story" /></p>
-
-<p>The source code from the stream story gives a few more clues as to Facebook&#8217;s strategy for products. The Want/Unwant action link even includes &#8216;socialcommerce&#8217;</p>
-
-<p><img class="right" src="/images/product_old.jpg" title="Product old" ></p>
-
-<p>It&#8217;s clear that Facebook are working on a new OpenGraph representation of products. They&#8217;re even calling the current Product object &#8216;Product Old&#8217;.</p>
-
-<p>I decided to look for the new model in the schema.</p>
-
-<p><a href="http://graph.facebook.com/schema/og/fb/ogproduct">Nothing too exciting</a>, until I looked at the <a href="http://graph.facebook.com/schema/opengraphaction/fb/ogproduct">actions associated with the object</a>.</p>
-
-<p><img class="right" src="/images/product_purchased.jpg" title="Product purchased" ></p>
-
-<p>The <code>product.purchased</code> action will share purchases (or donations, it seems) of products, or items in Facebook games.</p>
-
-<p>It&#8217;s possible to view the configuration page for the action - it&#8217;s similar to other built-in actions. However, other API pages for the new objects and actions give a &#8216;Whitelist Only&#8217; error.</p>
-
-<p><img src="/images/configuration.jpg" title="Product Purchased Configuration" ></p>
-
-<p>It appears that product wants and purchases will be accessible similar to other user actions - music, news and video. I&#8217;ll keep investigating Facebook&#8217;s social commerce plans and keep you updated!</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/06/29/facebook-social-context/">Facebook Social Context</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-06-29T15:45:00+01:00" pubdate data-updated="true">Jun 29<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Another unreleased <a href="http://developers.facebook.com/plugins">social plugin</a> is called Social Context.</p>
-
-<p><img src="/images/social_context.jpg" title="Social Context" alt="Social Context Screenshot" /></p>
-
-<p>It takes a list of keywords, finds related Facebook brand pages, and renders a list of friends who like that brand.</p>
-
-<p>For cola:</p>
-
-<pre><code>&lt;fb:social-context keywords="cola"&gt;&lt;/fb:social-context&gt;
-</code></pre>
-
-<div class="fb-social-context" data-keywords="cola" data-size="large"></div>
-
-
-<p>or books:</p>
-
-<div class="fb-social-context" data-keywords="books"></div>
-
-
-<p>Interestingly, the plugin uses the keyword to find the most definitive page for the category. For cola, <a href="http://www.facbeook.com/coca-cola">Coca-Cola</a>, or books, <a href="https://www.facebook.com/pages/Harry-Potter/107641979264998">Harry Potter</a>.</p>
-
-<p>Obviously, the pages returned will depend on your social circle. I&#8217;m not entirely sure of the use case for this yet. Along with keywords, the plugin can use URLs, or a Facebook object_id, although these don&#8217;t appear to show any results.</p>
-
-<p>I&#8217;ll keep exploring the possibilities of this plugin.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/06/27/facebook-want/">Facebook Want Button</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2012-06-27T21:04:00+01:00" pubdate data-updated="true">Jun 27<span>th</span>, 2012</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>Here&#8217;s an example of the Facebook Want button.</p>
-
-<p>Currently, publishing want actions is disabled, though the button does render.</p>
-
-<pre><code>&lt;fb:want href="..."&gt;&lt;/fb:want&gt;
-</code></pre>
-
-<div class="fb-want" data-href="http://tom.waddington.me/facebook/product.html"></div>
-
-
-<p>The plugin error is</p>
-
-<pre><code>App ... is not allowed to create actions of type product:product.wants for user ...
-</code></pre>
-
-<p>It&#8217;s likely Facebook can then built a universal wishlist that could be queried by other apps through the Graph API.</p>
-
-<p>Currently, <a href="https://developers.facebook.com/tools/explorer/5825164839/?method=GET&amp;path=me/wants">querying the me/wants connection</a> on the Graph API shows a blank list, rather than any error.</p>
-
-<p><strong> Update: </strong>
-<a href="/blog/2012/06/29/facebook-social-context/">Interested in other unreleased Facebook plugins</a>?</p>
-
-<p><strong> Update 2: </strong>
-Facebook have since <a href="https://github.com/tomwaddington/facebook-js-sdk/commit/6e1724cac49c16c0bde19fdfae3532d4c84406ed">removed the code from the SDK</a>. I&#8217;m using an older copy of the code, and the button still works.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2012/05/25/facebook-schemas/">Browsing Facebook Schemas</a></h1>
+      <h1 class="entry-title">Browsing Facebook Schemas</h1>
     
     
       <p class="meta">
@@ -296,7 +113,7 @@ Facebook have since <a href="https://github.com/tomwaddington/facebook-js-sdk/co
   </header>
 
 
-  <div class="entry-content"><p>I&#8217;ve been working a lot with the Facebook Open Graph on <a href="http://www.cutoutandkeep.net">Cut Out + Keep</a> to push favorites, comments and projects back to the Timeline and Ticker. Trying to get it setup isn&#8217;t always straightforward though, so it&#8217;s great to see how larger sites have configured their objects and actions.</p>
+<div class="entry-content"><p>I&#8217;ve been working a lot with the Facebook Open Graph on <a href="http://www.cutoutandkeep.net">Cut Out + Keep</a> to push favorites, comments and projects back to the Timeline and Ticker. Trying to get it setup isn&#8217;t always straightforward though, so it&#8217;s great to see how larger sites have configured their objects and actions.</p>
 
 <p>If you&#8217;ve worked with adding Open Graph tags to web pages, you might have noticed the <code>prefix="..."</code> attribute to add to the <code>&lt;head&gt;</code> of your page.</p>
 
@@ -354,18 +171,62 @@ Facebook have since <a href="https://github.com/tomwaddington/facebook-js-sdk/co
 
 <p>It works for Open Graph actions too - just replace <code>/schema/og</code> with <code>/schema/opengraphaction</code></p>
 </div>
+
+
+  <footer>
+    <p class="meta">
+      
   
+
+<span class="byline author vcard">Posted by <span class="fn">Tom Waddington</span></span>
+
+      
+
+
+
+
+
+
+
+
   
 
 
-    </article>
+<time datetime="2012-05-25T23:35:00+01:00" pubdate data-updated="true">May 25<span>th</span>, 2012</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
   
-  <div class="pagination">
-    
-    <a href="/blog/archives">Blog Archives</a>
-    
-  </div>
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://tomwaddington.github.com/blog/2012/05/25/facebook-schemas/" data-via="tomwaddington" data-counturl="http://tomwaddington.github.com/blog/2012/05/25/facebook-schemas/" >Tweet</a>
+  
+  
+  
+    <div class="fb-like" data-send="true" data-width="450" data-show-faces="false"></div>
+  
 </div>
+
+    
+	<p>For updates, subscribe to me on Facebook: <div class='fb-subscribe' data-layout="button_count"  data-href="http://www.facebook.com/tomwaddington" data-show_faces="false"></div></p>
+    <p class="meta">
+      
+      
+        <a class="basic-alignment right" href="/blog/2012/06/27/facebook-want/" title="Next Post: Facebook Want Button">Facebook Want Button &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+<section>
+	
+	<fb:comments href="http://tomwaddington.github.com/blog/2012/05/25/facebook-schemas/"></fb:comments>
+	
+</section>
+
+</div>
+
 <aside class="sidebar">
   
     <section>
@@ -395,7 +256,7 @@ Facebook have since <a href="https://github.com/tomwaddington/facebook-js-sdk/co
 <section>
   <h1>Latest Tweets</h1>
   <ul id="tweets">
-    <li class="loading">Status updating&#8230;</li>
+    <li class="loading">Status updating...</li>
   </ul>
   <script type="text/javascript">
     $.domReady(function(){
@@ -423,6 +284,7 @@ Facebook have since <a href="https://github.com/tomwaddington/facebook-js-sdk/co
 
   
 </aside>
+
 
     </div>
   </div>
