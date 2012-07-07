@@ -4,7 +4,7 @@
   <title><![CDATA[Category: Facebook | Tom Waddington]]></title>
   <link href="http://tomwaddington.github.com/blog/categories/facebook/atom.xml" rel="self"/>
   <link href="http://tomwaddington.github.com/"/>
-  <updated>2012-07-03T23:46:30+01:00</updated>
+  <updated>2012-07-07T19:51:30+01:00</updated>
   <id>http://tomwaddington.github.com/</id>
   <author>
     <name><![CDATA[Tom Waddington]]></name>
@@ -85,7 +85,9 @@
     <link href="http://tomwaddington.github.com/blog/2012/06/27/facebook-want/"/>
     <updated>2012-06-27T21:04:00+01:00</updated>
     <id>http://tomwaddington.github.com/blog/2012/06/27/facebook-want</id>
-    <content type="html"><![CDATA[<p>Here's an example of the Facebook Want button.</p>
+    <content type="html"><![CDATA[<p><img class="left" src="/images/want_button_2.png" title="Want Button" ></p>
+
+<p>Here's an example of the Facebook Want button.</p>
 
 <p>Currently, publishing want actions is disabled, though the button does render.</p>
 
@@ -109,6 +111,9 @@
 
 <p><strong> Update 2: </strong>
 Facebook have since <a href="https://github.com/tomwaddington/facebook-js-sdk/commit/6e1724cac49c16c0bde19fdfae3532d4c84406ed">removed the code from the SDK</a>. I'm using an older copy of the code, and the button still works.</p>
+
+<p><strong> Update 3: </strong>
+Facebook have disabled the Want button code. I've put up some images of how it looked!</p>
 ]]></content>
   </entry>
   
